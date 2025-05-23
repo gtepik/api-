@@ -1,6 +1,6 @@
 import Venta from "../models/Ventas.js";
 
-const consulta = async (req, res) => {
+const consultaVentas = async (req, res) => {
     try {
         const ventas = await Venta.find();
         res.json(ventas);
@@ -9,7 +9,7 @@ const consulta = async (req, res) => {
     }
 };
 
-const consultaVentaPorId = async (req, res) => {
+const consultaVenta = async (req, res) => {
     try {
         if(recibido.user ) return respuesta.status(500).json({"msj":"no tienes permisosos para ejecutar esta accion"});
         const venta = await Venta.findById(req.params.id);
@@ -71,9 +71,5 @@ const eliminarVenta = async (recibido, respuesta) => {
 };
 
 export {
-    consulta,
-    consultaVentaPorId,
-    insercionVenta,
-    actualizarVenta,
-    eliminarVenta,
+    consultaVentas,consultaVenta,insercionVenta,actualizarVenta,eliminarVenta,
 };

@@ -6,4 +6,4 @@ const ProveedorModelo = new mongoose.Schema({
     telefono: { type: String, required: true }
 });
 
-export default mongoose.model('proveedor', ProveedorModelo);
+export default mongoose.model('proveedor',ProveedorModelo);

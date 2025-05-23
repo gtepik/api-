@@ -7,4 +7,4 @@ const clientesModelo = new mongoose.Schema({
     compras: { type: Number, required: true }
 });
 
-export default mongoose.model('clientes', clientesModelo);
+export default mongoose.model('clientes',clientesModelo);

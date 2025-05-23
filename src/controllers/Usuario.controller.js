@@ -97,7 +97,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Usuario from "../models/Usuarios.js";
 
-const consulta = async (req, res) => {
+const consultas = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
         res.json(usuarios);
@@ -106,7 +106,7 @@ const consulta = async (req, res) => {
     }
 };
 
-const consulta_individual = async (req, res) => {
+const consulta_individuales = async (req, res) => {
     try {
         const { usuario } = req.params;
         const usuarioEncontrado = await Usuario.findOne({ usuario });
@@ -185,7 +185,7 @@ const registro_usuario = async (recibido, respuesta) => {
     try {
         const { nombre,usuario, email,password, rol } = recibido.body;
         const cifrado = await bcrypt.hash(password, 10);
-        const registro = new Usuario({"nombre": nombre, "usuario": usuario, "email": email, "rol": rol,"password": cifrado });
+        const registro = new Usuario({"nombre": nombre, "usuario": usuario, "rol": rol,"password": cifrado });
         await registro.save();
         respuesta.status(201).json({ "msj": "usuario registrado", "registro": registro });
     } catch (error) {
@@ -218,4 +218,4 @@ const iniciar_sesion = async (recibido, respuesta) => {
     }
 };
 
-export {consulta,consulta_individual,insercionUsuario,actualizarUsuario,eliminarUsuario,registro_usuario,iniciar_sesion};
+export {consultas,consulta_individuales,insercionUsuario,actualizarUsuario,eliminarUsuario,registro_usuario,iniciar_sesion};
